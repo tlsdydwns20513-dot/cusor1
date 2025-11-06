@@ -23,7 +23,6 @@ function App() {
     setSoundEnabled,
     startGame,
     checkAnswer,
-    endGame,
     togglePause,
   } = useGameState();
 
@@ -53,11 +52,11 @@ function App() {
     setScreen('game');
   };
 
-  const handleGameEnd = () => {
+  const handleGameEnd = React.useCallback(() => {
     setScreen('result');
-  };
+  }, []);
 
-  const handleRestart = () => {
+  const handleRestart = React.useCallback(() => {
     // 같은 모드로 다시 시작
     if (selectedMode === 'challenge') {
       startGame('challenge');
@@ -65,23 +64,23 @@ function App() {
     } else {
       setScreen('modeSelect');
     }
-  };
+  }, [selectedMode, startGame]);
 
-  const handleMainMenu = () => {
+  const handleMainMenu = React.useCallback(() => {
     setScreen('menu');
     setSelectedMode(null);
-  };
+  }, []);
 
-  const handleViewStats = () => {
+  const handleViewStats = React.useCallback(() => {
     setScreen('stats');
-  };
+  }, []);
 
   // 게임 오버 처리
   React.useEffect(() => {
     if (gameState.isGameOver && screen === 'game') {
       setTimeout(handleGameEnd, 500);
     }
-  }, [gameState.isGameOver, screen]);
+  }, [gameState.isGameOver, screen, handleGameEnd]);
 
   return (
     <div className="app">

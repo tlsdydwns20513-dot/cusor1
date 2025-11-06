@@ -17,9 +17,9 @@ export const generateMultiplicationProblem = (
   
   // 난이도 결정
   let difficulty: DifficultyLevel = 'normal';
-  if (DIFFICULTY_TABLES.easy.includes(multiplicand)) {
+  if ((DIFFICULTY_TABLES.easy as readonly number[]).includes(multiplicand)) {
     difficulty = 'easy';
-  } else if (DIFFICULTY_TABLES.hard.includes(multiplicand)) {
+  } else if ((DIFFICULTY_TABLES.hard as readonly number[]).includes(multiplicand)) {
     difficulty = 'hard';
   }
   

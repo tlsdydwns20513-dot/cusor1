@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { GameResult as GameResultType, LearningStats } from '../types';
+import { GameResult as GameResultType } from '../types';
 import { STORAGE_KEYS, BADGES } from '../constants';
 import { loadStats, checkNewBadges } from '../utils/gameLogic';
 import { playClickSound } from '../utils/sound';

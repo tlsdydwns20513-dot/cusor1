@@ -41,7 +41,6 @@ export const useGameState = () => {
   
   const animationFrameRef = useRef<number>();
   const lastUpdateTimeRef = useRef<number>(Date.now());
-  const dropletSpawnTimerRef = useRef<number>();
   const problemHistoryRef = useRef<Array<{ table: number; correct: boolean }>>([]);
 
   /**
