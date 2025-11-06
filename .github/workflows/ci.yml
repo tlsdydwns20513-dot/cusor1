@@ -1,0 +1,47 @@
+name: CI - 코드 검증
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+    
+    steps:
+      - name: Checkout 코드
+        uses: actions/checkout@v4
+      
+      - name: Node.js ${{ matrix.node-version }} 설정
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      
+      - name: 의존성 설치
+        run: npm ci
+      
+      - name: TypeScript 타입 체크
+        run: npx tsc --noEmit
+      
+      - name: 린트 실행
+        run: npm run lint
+        continue-on-error: true
+      
+      - name: 빌드 테스트
+        run: npm run build
+      
+      - name: 빌드 결과물 확인
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "빌드 실패: dist 폴더가 생성되지 않았습니다"
+            exit 1
+          fi
+          echo "✅ 빌드 성공!"
+
