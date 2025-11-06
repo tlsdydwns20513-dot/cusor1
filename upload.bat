@@ -46,10 +46,10 @@ echo [5/7] 브랜치 이름 변경...
 git branch -M main
 
 echo [6/7] GitHub 저장소 연결...
-git remote add origin https://github.com/tlsdydwns20513-dot/multiplication-rain.git
+git remote add origin https://github.com/tlsdydwns20513-dot/cusor1.git
 if %errorlevel% neq 0 (
     echo 원격 저장소가 이미 연결되어 있습니다.
-    git remote set-url origin https://github.com/tlsdydwns20513-dot/multiplication-rain.git
+    git remote set-url origin https://github.com/tlsdydwns20513-dot/cusor1.git
 )
 
 echo [7/7] GitHub에 업로드 중...
@@ -68,14 +68,14 @@ if %errorlevel% equ 0 (
     echo ✅ 업로드 성공!
     echo ========================================
     echo.
-    echo 저장소 URL: https://github.com/tlsdydwns20513-dot/multiplication-rain
+    echo 저장소 URL: https://github.com/tlsdydwns20513-dot/cusor1
     echo.
     echo 다음 단계:
     echo 1. GitHub 저장소 페이지로 이동
     echo 2. Settings - Pages - Source를 'GitHub Actions'로 설정
     echo 3. 자동 배포 시작!
     echo.
-    echo 배포 URL: https://tlsdydwns20513-dot.github.io/multiplication-rain/
+    echo 배포 URL: https://tlsdydwns20513-dot.github.io/cusor1/
     echo.
 ) else (
     echo.
