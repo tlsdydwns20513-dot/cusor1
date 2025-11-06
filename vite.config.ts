@@ -5,7 +5,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   // GitHub Pages 배포를 위한 base 설정
-  base: '/cusor1/',
+  // 프로덕션에서는 '/cusor1/', 로컬에서는 '/'
+  base: process.env.NODE_ENV === 'production' ? '/cusor1/' : '/',
   server: {
     port: 3000,
     open: true
@@ -14,6 +15,8 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: false,
     // 청크 크기 경고 제한 증가
-    chunkSizeWarningLimit: 1000
+    chunkSizeWarningLimit: 1000,
+    // 상대 경로로 빌드
+    assetsDir: 'assets',
   }
 })
